@@ -15,6 +15,7 @@ class CategoryService
     {
         $categoryList = $this->categoryRepository->get();
 
-        return view('layouts.landrick.index', ['categoryList' => $categoryList]);
+        return $categoryList;
+//        return view('layouts.landrick.index', ['categoryList' => $categoryList]);
     }
 }
