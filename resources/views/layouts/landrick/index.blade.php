@@ -6,6 +6,10 @@
 @include('layouts.landrick.header')
 <!-- End Header -->
 
+<!-- Custom Css -->
+@stack('css')
+<!-- End Custom Css -->
+
 <body>
 <!-- Loader -->
 <div id="preloader">
@@ -237,5 +241,10 @@
 
 <!-- javascript -->
 @include('layouts.landrick.js')
+<!-- End Js -->
+
+<!-- Custom Js -->
+@stack('js')
+<!-- End Custom Js -->
 </body>
 </html>

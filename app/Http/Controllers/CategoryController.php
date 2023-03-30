@@ -16,4 +16,14 @@ class CategoryController extends Controller
     {
         return $this->categoryService->index();
     }
+
+    public function createForm()
+    {
+        return $this->categoryService->createForm();
+    }
+
+    public function store(Request $request)
+    {
+        return $this->categoryService->store($request);
+    }
 }
