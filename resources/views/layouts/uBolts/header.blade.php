@@ -6,7 +6,7 @@
 
     <link rel="shortcut icon" href="{{ asset('assets/ubolts/assets/images/favicon_1.ico') }}">
 
-    <title>Ubold - Responsive Admin Dashboard Template</title>
+    <title>Cari Kerja - Loker Terbaik Untuk Anda</title>
 
     <!--Morris Chart CSS -->
     <link rel="stylesheet" href="{{ asset('assets/ubolts/assets/plugins/morris/morris.css') }}">

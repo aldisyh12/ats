@@ -2,10 +2,10 @@
     <div class="container">
         <!-- Logo container-->
         <div>
-            <a class="logo" href="index.html">Landrick<span class="text-primary">.</span></a>
+            <a class="logo" href="index.html">CariKerja.com<span class="text-primary"></span></a>
         </div>
         <div class="buy-button">
-            <a href="https://1.envato.market/4n73n" target="_blank" class="btn btn-primary">Buy Now</a>
+            <a href="{{ route('user.form.register') }}" target="_blank" class="btn btn-primary">Daftar Sekarang</a>
         </div><!--end login button-->
         <!-- End Logo container-->
         <div class="menu-extras">

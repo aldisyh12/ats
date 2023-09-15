@@ -2,6 +2,8 @@
 
 namespace App\Services;
 
+use App\Models\Job;
+use App\Models\User;
 use App\Repositories\CandidateRepository;
 
 class CandidateService
@@ -13,6 +15,14 @@ class CandidateService
 
     public function index()
     {
-        return view('admin.candidate.index');
+        $candidateList = $this->candidateRepository->get();
+        $candidateList->map(function ($q) {
+            $q['job'] = Job::where('id', $q->job_id)->with('category', 'file')->first();
+            $q['user'] = User::where('id', $q->user_id)->first();
+            return $q;
+        });
+
+
+        return view('admin.candidate.index', ['candidateList' => $candidateList]);
     }
 }

@@ -14,7 +14,7 @@ class CreateReportTable extends Migration
     public function up()
     {
         Schema::create('report', function (Blueprint $table) {
-            $table->uuid('id')->primary()->unique();
+            $table->id();
             $table->bigInteger('job_id');
             $table->bigInteger('candidate_id');
             $table->timestamps();

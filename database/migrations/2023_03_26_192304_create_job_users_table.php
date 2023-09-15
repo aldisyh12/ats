@@ -14,7 +14,7 @@ class CreateJobUsersTable extends Migration
     public function up()
     {
         Schema::create('job_users', function (Blueprint $table) {
-            $table->uuid('id')->primary()->unique();
+            $table->id();
             $table->bigInteger('job_id');
             $table->bigInteger('candidate_id');
             $table->date('date');

@@ -14,7 +14,7 @@ class CreateCvScoreTable extends Migration
     public function up()
     {
         Schema::create('cv_score', function (Blueprint $table) {
-            $table->uuid('id')->primary()->unique();
+            $table->id();
             $table->bigInteger('user_id');
             $table->timestamps();
         });

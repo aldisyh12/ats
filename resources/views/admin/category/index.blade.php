@@ -30,7 +30,7 @@
                 </button>
             </div>
 
-            <h4 class="page-title">Category</h4>
+            <h4 class="page-title">Kategori</h4>
             <ol class="breadcrumb">
                 <li>
                     <a href="#">Dashboard</a>
@@ -39,7 +39,7 @@
                     <a href="#">Master</a>
                 </li>
                 <li class="active">
-                    Category
+                    Kategori
                 </li>
             </ol>
         </div>
@@ -49,11 +49,9 @@
         <div class="col-sm-12">
             <div class="card-box table-responsive">
 
-                <h4 class="m-t-0 header-title"><b>Responsive example</b></h4>
+                <h4 class="m-t-0 header-title"><b>Kategori Pekerjaan</b></h4>
                 <p class="text-muted font-13 m-b-30">
-                    Responsive is an extension for DataTables that resolves that problem by optimising the
-                    table's layout for different screen sizes through the dynamic insertion and removal of
-                    columns from the table.
+                    List kategori untuk pilihan pekerjaan yang akan diinput.
                 </p>
 
                 <table id="datatable-responsive"
@@ -61,40 +59,24 @@
                        width="100%">
                     <thead>
                     <tr>
-                        <th>First name</th>
-                        <th>Last name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Age</th>
-                        <th>Start date</th>
-                        <th>Salary</th>
-                        <th>Extn.</th>
-                        <th>E-mail</th>
+                        <th>No</th>
+                        <th>Nama Kategori</th>
+                        <th>Dibuat</th>
+                        <th>Aksi</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>Tiger</td>
-                        <td>Nixon</td>
-                        <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td>61</td>
-                        <td>2011/04/25</td>
-                        <td>$320,800</td>
-                        <td>5421</td>
-                        <td>t.nixon@datatables.net</td>
-                    </tr>
-                    <tr>
-                        <td>Donna</td>
-                        <td>Snider</td>
-                        <td>Customer Support</td>
-                        <td>New York</td>
-                        <td>27</td>
-                        <td>2011/01/25</td>
-                        <td>$112,000</td>
-                        <td>4226</td>
-                        <td>d.snider@datatables.net</td>
-                    </tr>
+                    @foreach($categoryList as $key => $record)
+                        <tr>
+                            <td>{{ ++$key }}</td>
+                            <td>{{ $record->name }}</td>
+                            <td>{{ Carbon\Carbon::parse($record->created_at)->format('d-m-Y') }}</td>
+                            <td>
+                                <button class="btn btn-sm btn-primary">Ubah</button>
+                                <button class="btn btn-sm btn-danger">Hapus</button>
+                            </td>
+                        </tr>
+                    @endforeach
                     </tbody>
                 </table>
             </div>
@@ -116,7 +98,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="field-1" class="control-label">Name</label>
-                                    <input type="text" class="form-control" id="field-1" placeholder="John">
+                                    <input type="text" name="name" class="form-control" id="field-1" placeholder="Nama Kategori">
                                 </div>
                             </div>
                         </div>

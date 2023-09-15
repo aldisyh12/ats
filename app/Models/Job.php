@@ -11,4 +11,14 @@ class Job extends Model
     protected $guarded = [];
     protected $table = "job";
     public $timestamps = false;
+
+    function category()
+    {
+        return $this->hasOne('App\Models\Category', 'id', 'category_id');
+    }
+
+    function file()
+    {
+        return $this->hasOne('App\Models\File', 'id_job', 'id');
+    }
 }

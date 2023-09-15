@@ -31,16 +31,16 @@ class CategoryService
 
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'name' => 'required'
-        ]);
+//        $validator = Validator::make($request->all(), [
+//            'name' => 'required'
+//        ]);
 
         try {
-            $courier = new Category();
-            $courier->name = $request->name;
-            $courier->created_at = DateTimeConverter::getDateTimeNow();
-            $courier->created_by = auth()->user()->id;
-            $this->categoryRepository->create($courier->toArray());
+            $record = new Category();
+            $record->name = $request->name;
+            $record->created_at = DateTimeConverter::getDateTimeNow();
+            $record->created_by = auth()->user()->id;
+            $this->categoryRepository->create($record->toArray());
         } catch (\Exception $ex) {
             Log::error(Constants::ERROR, ['message' => $ex->getMessage()]);
             return redirect(route('admin.category'))->with(['error' => 'Kategori gagal ditambahkan']);

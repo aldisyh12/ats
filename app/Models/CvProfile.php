@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Candidate extends Model
+class CvProfile extends Model
 {
     use HasFactory;
     protected $guarded = [];
-    protected $table = "candidate";
+    protected $table = "cv_profile";
 }

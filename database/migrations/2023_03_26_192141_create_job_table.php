@@ -14,7 +14,7 @@ class CreateJobTable extends Migration
     public function up()
     {
         Schema::create('job', function (Blueprint $table) {
-            $table->uuid('id')->primary()->unique();
+            $table->id();
             $table->string('job_header');
             $table->bigInteger('category_id');
             $table->string('description');
