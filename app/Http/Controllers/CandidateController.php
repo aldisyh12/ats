@@ -16,4 +16,14 @@ class CandidateController extends Controller
     {
         return $this->candidateService->index();
     }
+
+    public function update($id, Request $request)
+    {
+        return $this->candidateService->update($id, $request);
+    }
+
+    public function show($id)
+    {
+        return $this->candidateService->show($id);
+    }
 }

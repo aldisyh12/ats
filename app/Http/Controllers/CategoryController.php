@@ -26,4 +26,19 @@ class CategoryController extends Controller
     {
         return $this->categoryService->store($request);
     }
+
+    public function show($id)
+    {
+        return $this->categoryService->show($id);
+    }
+
+    public function update($id, Request $request)
+    {
+        return $this->categoryService->update($id, $request);
+    }
+
+    public function delete($id)
+    {
+        return $this->categoryService->delete($id);
+    }
 }

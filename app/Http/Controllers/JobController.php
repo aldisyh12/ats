@@ -27,6 +27,21 @@ class JobController extends Controller
         return $this->jobService->store($request);
     }
 
+    public function show($id)
+    {
+        return $this->jobService->show($id);
+    }
+
+    public function update($id, Request $request)
+    {
+        return $this->jobService->update($id, $request);
+    }
+
+    public function delete($id)
+    {
+        return $this->jobService->delete($id);
+    }
+
     /*
      * FUNCTION PEKERJAAN USER
      */

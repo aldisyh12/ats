@@ -52,8 +52,10 @@
                         <th>No</th>
                         <th>Nama Kandidat</th>
                         <th>Pekerjaan Yang Dilamar</th>
+                        <th>Cv Score</th>
+                        <th>Status Pelamar</th>
                         <th>Dibuat</th>
-                        <th>Aksi</th>
+                        <th colspan="3">Aksi</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -62,11 +64,50 @@
                             <td>{{ ++$key }}</td>
                             <td>{{ $record->user->name ?? '-' }}</td>
                             <td>{{ $record->job->job_header ?? '-' }}</td>
+                            <td>{{ $record->score ?? 0 }}</td>
+                            @if($record->status === 1)
+                            <td>
+                                <button class="btn btn-sm btn-secondary">Proses</button>
+                            </td>
+                            @elseif($record->status === 2)
+                            <td>
+                                <button class="btn btn-sm btn-primary">Diterima</button>
+                            </td>
+                            @else
+                            <td>
+                                <button class="btn btn-sm btn-danger">Ditolak</button>
+                            </td>
+                            @endif
                             <td>{{ Carbon\Carbon::parse($record->created_at)->format('d-m-Y') }}</td>
                             <td>
-                                <button class="btn btn-sm btn-primary">Detail</button>
-                                <button class="btn btn-sm btn-success">Terima</button>
-                                <button class="btn btn-sm btn-danger">Tolak</button>
+                                <form action="{{ route('admin.candidate.show', $record->id) }}">
+                                    <div class="form-group" hidden>
+                                        <input type="hidden" name="status" class="form-control" value="2">
+                                    </div>
+                                    <button class="btn btn-sm btn-primary" type="submit">Detail</button>
+                                </form>
+                            </td>
+                            <td>
+                                @if($record->status == 1)
+                                <form action="{{ route('admin.candidate.update', $record->id) }}" method="POST">
+                                    @csrf
+                                    <div class="form-group" hidden>
+                                        <input type="hidden" name="status" class="form-control" value="2">
+                                    </div>
+                                    <button class="btn btn-sm btn-success" type="submit">Terima</button>
+                                </form>
+                                @endif
+                            </td>
+                            <td>
+                                @if($record->status == 1)
+                                <form action="{{ route('admin.candidate.update', $record->id) }}" method="POST">
+                                    @csrf
+                                    <div class="form-group" hidden>
+                                        <input type="hidden" name="status" class="form-control" value="3">
+                                    </div>
+                                    <button class="btn btn-sm btn-danger" type="submit">Tolak</button>
+                                </form>
+                                @endif
                             </td>
                         </tr>
                     @endforeach

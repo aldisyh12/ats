@@ -27,14 +27,14 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="btn-group pull-right m-t-15">
-                    <button type="button" class="btn btn-default dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="false">Settings <span class="m-l-5"><i class="fa fa-cog"></i></span></button>
-                    <ul class="dropdown-menu drop-menu-right" role="menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
-                    </ul>
+{{--                    <button type="button" class="btn btn-default dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="false">Settings <span class="m-l-5"><i class="fa fa-cog"></i></span></button>--}}
+{{--                    <ul class="dropdown-menu drop-menu-right" role="menu">--}}
+{{--                        <li><a href="#">Action</a></li>--}}
+{{--                        <li><a href="#">Another action</a></li>--}}
+{{--                        <li><a href="#">Something else here</a></li>--}}
+{{--                        <li class="divider"></li>--}}
+{{--                        <li><a href="#">Separated link</a></li>--}}
+{{--                    </ul>--}}
                 </div>
 
                 <h4 class="page-title">List Pekerjaan Yang Sudah Dilamar</h4>
@@ -66,28 +66,28 @@
         <div class="row port">
             <div class="portfolioContainer">
                 @foreach($record as $key => $value)
-                    <div class="col-sm-6 col-lg-3 col-md-4 {{ $value->job->category->id }}">
+                    <div class="col-sm-6 col-lg-3 col-md-4 {{ $value->job->category->id ?? '-' }}">
                         <div class="gal-detail thumb">
                             @if($value->job->file != null)
                                 <a href="{{ asset('pekerjaan/'. $value->job->file->path) }}" class="image-popup" title="Screenshot-1">
                                     @else
-                                        <a href="{{ asset('assets/ubolts/assets/images/gallery/1.jpg') }}" class="image-popup" title="Screenshot-1">
+                                        <a href="{{ asset('pekerjaan/'. $value->job->file->path) }}" class="image-popup" title="Screenshot-1">
                                             @endif
-                                            @if($value->file != null)
+                                            @if($value->job->file != null)
                                                 <img src="{{ asset('pekerjaan/'. $value->job->file->path) }}" width="600" height="265" class="thumb-img" alt="work-thumbnail">
                                             @else
                                                 <img src="{{ asset('assets/ubolts/assets/images/gallery/2.jpg') }}" class="thumb-img" alt="work-thumbnail">
                                             @endif
                                         </a>
                                         @if($value->status == 0)
-                                            <h4>{{ $value->job->job_header }} &nbsp; <button class="btn btn-sm btn-secondary">Menunggu</button></h4>
+                                            <h4>{{ $value->job->job_header ?? '-' }} &nbsp; <button class="btn btn-sm btn-secondary">Menunggu</button></h4>
                                         @elseif($value->status == 1)
-                                            <h4>{{ $value->job->job_header }} &nbsp; <button class="btn btn-sm btn-primary">Diterima</button></h4>
+                                            <h4>{{ $value->job->job_header ?? '-' }} &nbsp; <button class="btn btn-sm btn-primary">Diterima</button></h4>
                                         @elseif($value->status == 2)
-                                            <h4>{{ $value->job->job_header }} &nbsp; <button class="btn btn-sm btn-danger">Ditolak</button></h4>
+                                            <h4>{{ $value->job->job_header ?? '-' }} &nbsp; <button class="btn btn-sm btn-danger">Ditolak</button></h4>
                                         @endif
-                                        <h6>kategori : {{ $value->job->category->name }}</h6>
-                                        <h6>Melamar pada - {{ $value->date }}</h6>
+                                        <h6>kategori : {{ $value->job->category->name ?? '-' }}</h6>
+                                        <h6>Melamar pada - {{ $value->date ?? '-' }}</h6>
                         </div>
                     </div>
                 @endforeach

@@ -4,9 +4,9 @@
     <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
     <meta name="author" content="Coderthemes">
 
-    <link rel="shortcut icon" href="{{ asset('assets/ubolts/assets/images/favicon_1.ico') }}">
+    <link rel="shortcut icon" href="{{ asset('assets/logo.jpeg') }}">
 
-    <title>Cari Kerja - Loker Terbaik Untuk Anda</title>
+    <title>Cipta Karsa Karya - Loker Terbaik Untuk Anda</title>
 
     <!--Morris Chart CSS -->
     <link rel="stylesheet" href="{{ asset('assets/ubolts/assets/plugins/morris/morris.css') }}">
@@ -26,6 +26,7 @@
     <![endif]-->
 
     <script src="{{ asset('assets/ubolts/assets/js/modernizr.min.js') }}"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.css">
 
 
 </head>

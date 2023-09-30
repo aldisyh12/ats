@@ -48,4 +48,40 @@ class CategoryService
 
         return redirect(route('admin.category'))->with(['success' => 'Kategori berhasil ditambahkan']);
     }
+
+    public function show($id)
+    {
+        $record = Category::find($id);
+
+        return view('admin.category.update', ["record" => $record]);
+    }
+
+    public function update($id, Request $request)
+    {
+        try {
+            $record = Category::find($id);
+            $record->name = $request->name;
+            $record->updated_at = DateTimeConverter::getDateTimeNow();
+//            $record->updated_by = auth()->user()->id;
+            $record->save();
+        } catch (\Exception $ex) {
+            Log::error(Constants::ERROR, ['message' => $ex->getMessage()]);
+            return redirect(route('admin.category'))->with(['error' => 'Kategori gagal diubah']);
+        }
+
+        return redirect(route('admin.category'))->with(['success' => 'Kategori berhasil diubah']);
+    }
+
+    public function delete($id)
+    {
+        try {
+            $record = Category::find($id);
+            $record->delete();
+        } catch (\Exception $ex) {
+            Log::error(Constants::ERROR, ['message' => $ex->getMessage()]);
+            return redirect(route('admin.category'))->with(['error' => 'Kategori gagal dihapus']);
+        }
+
+        return redirect(route('admin.category'))->with(['success' => 'Kategori berhasil dihapus']);
+    }
 }

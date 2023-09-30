@@ -39,9 +39,9 @@
                 <div class="col-lg-12">
                     <div class="btn-toolbar m-t-20" role="toolbar">
                         <div class="btn-group">
-                            <button type="button" class="btn btn-primary waves-effect waves-light">
+                            <a href="{{route('user.job')}}" type="button" class="btn btn-primary waves-effect waves-light">
                                 Kembali
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>

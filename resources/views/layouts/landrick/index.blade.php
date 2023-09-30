@@ -34,7 +34,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-7 col-md-7">
                         <div class="title-heading mt-4">
-                            <h1 class="heading mb-3">Temukan pekerjaan impianmu bersama <span class="text-primary">CariKerja</span> </h1>
+                            <h1 class="heading mb-3">Temukan pekerjaan impianmu bersama <span class="text-primary">Cipta Karsa Karya</span> </h1>
                             <p class="para-desc text-muted">Kami memudahkanmu menemukan pekerjaan terbaik.</p>
                             <div class="mt-4 pt-2">
                                 <a href="{{ route('user.form.register') }}" class="btn btn-primary mt-2 mr-2">Daftar Sekarang</a>
@@ -54,35 +54,35 @@
 <!-- Hero End -->
 
 <!-- Partners start -->
-<section class="pt-5 pb-5 border-bottom border-top">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-2 col-md-2 col-6 text-center">
-                <img src="{{ asset('assets/landrick/images/client/1.png') }}" height="70" alt="">
-            </div><!--end col-->
+{{--<section class="pt-5 pb-5 border-bottom border-top">--}}
+{{--    <div class="container">--}}
+{{--        <div class="row justify-content-center">--}}
+{{--            <div class="col-lg-2 col-md-2 col-6 text-center">--}}
+{{--                <img src="{{ asset('assets/landrick/images/client/1.png') }}" height="70" alt="">--}}
+{{--            </div><!--end col-->--}}
 
-            <div class="col-lg-2 col-md-2 col-6 text-center">
-                <img src="{{ asset('assets/landrick/images/client/2.png') }}" height="70" alt="">
-            </div><!--end col-->
+{{--            <div class="col-lg-2 col-md-2 col-6 text-center">--}}
+{{--                <img src="{{ asset('assets/landrick/images/client/2.png') }}" height="70" alt="">--}}
+{{--            </div><!--end col-->--}}
 
-            <div class="col-lg-2 col-md-2 col-6 text-center mt-4 mt-sm-0">
-                <img src="{{ asset('assets/landrick/images/client/3.png') }}" height="70" alt="">
-            </div><!--end col-->
+{{--            <div class="col-lg-2 col-md-2 col-6 text-center mt-4 mt-sm-0">--}}
+{{--                <img src="{{ asset('assets/landrick/images/client/3.png') }}" height="70" alt="">--}}
+{{--            </div><!--end col-->--}}
 
-            <div class="col-lg-2 col-md-2 col-6 text-center mt-4 mt-sm-0">
-                <img src="{{ asset('assets/landrick/images/client/4.png') }}" height="70" alt="">
-            </div><!--end col-->
+{{--            <div class="col-lg-2 col-md-2 col-6 text-center mt-4 mt-sm-0">--}}
+{{--                <img src="{{ asset('assets/landrick/images/client/4.png') }}" height="70" alt="">--}}
+{{--            </div><!--end col-->--}}
 
-            <div class="col-lg-2 col-md-2 col-6 text-center mt-4 mt-sm-0">
-                <img src="{{ asset('assets/landrick/images/client/5.png') }}" height="70" alt="">
-            </div><!--end col-->
+{{--            <div class="col-lg-2 col-md-2 col-6 text-center mt-4 mt-sm-0">--}}
+{{--                <img src="{{ asset('assets/landrick/images/client/5.png') }}" height="70" alt="">--}}
+{{--            </div><!--end col-->--}}
 
-            <div class="col-lg-2 col-md-2 col-6 text-center mt-4 mt-sm-0">
-                <img src="{{ asset('assets/landrick/images/client/6.png') }}" height="70" alt="">
-            </div><!--end col-->
-        </div><!--end row-->
-    </div><!--end container-->
-</section><!--end section-->
+{{--            <div class="col-lg-2 col-md-2 col-6 text-center mt-4 mt-sm-0">--}}
+{{--                <img src="{{ asset('assets/landrick/images/client/6.png') }}" height="70" alt="">--}}
+{{--            </div><!--end col-->--}}
+{{--        </div><!--end row-->--}}
+{{--    </div><!--end container-->--}}
+{{--</section><!--end section-->--}}
 <!-- Partners End -->
 
 <!-- How It Work Start -->
@@ -92,7 +92,7 @@
             <div class="col-12 text-center">
                 <div class="section-title mb-60">
                     <h4 class="main-title mb-4">Susah Dapat Pekerjaan ?</h4>
-                    <p class="text-muted para-desc mb-0 mx-auto">Tenang saja di situs <span class="text-primary font-weight-bold">CariKerja</span> kamu dapat menemukan pekerjaan impianmu dengan mudah, progress yang cepat dan banyaknya lowongan pekerjaan dapat memudahkanmu menemukan pekerjaan terbaik.</p>
+                    <p class="text-muted para-desc mb-0 mx-auto">Tenang saja di situs <span class="text-primary font-weight-bold">Cipta Karsa Karya</span> kamu dapat menemukan pekerjaan impianmu dengan mudah, progress yang cepat dan banyaknya lowongan pekerjaan dapat memudahkanmu menemukan pekerjaan terbaik.</p>
                 </div>
             </div><!--end col-->
         </div><!--end row-->
@@ -177,48 +177,113 @@
 </section><!--end section-->
 <!-- How It Work End -->
 
+    <!-- Testi Start -->
+    <section class="section pb-0">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 text-center">
+                    <div class="section-title mb-60">
+                        <h4 class="main-title mb-4">Testimoni Dari Pengguna</h4>
+                        <p class="text-muted para-desc mx-auto mb-0">Start working with <span class="text-primary font-weight-bold">Cipta Karsa Karya</span> that can provide everything you need to generate awareness, drive traffic, connect.</p>
+                    </div>
+                </div><!--end col-->
+            </div><!--end row-->
+
+            <div class="row">
+                <div class="col-12">
+                    <div id="customer-testi" class="owl-carousel owl-theme">
+
+                        @foreach($penilaian as $key => $record)
+                        <div class="customer-testi mr-2 ml-2 text-center p-4 rounded border">
+                            @if($record->penilaian != null)
+                                <img src="{{ asset('pekerjaan/'. $record->penilaian->path) }}" class="mx-auto" width="100" height="80" />
+                            @else
+                                <img src="{{ asset('assets/ubolts/assets/images/users/avatar-2.jpg') }}" class="mx-auto" width="100" height="105" alt="profile-image">
+                            @endif
+{{--                            <img src="{{ asset('assets/landrick/images/client/1.png') }}" class="mx-auto" alt="">--}}
+                            <p class="text-muted mt-4">" {{ $record->description ?? '-' }}. "</p>
+                            <h6 class="text-primary">- {{ $record->user->name ?? '-' }}</h6>
+                        </div>
+                        @endforeach
+
+{{--                        <div class="customer-testi mr-2 ml-2 text-center p-4 rounded border">--}}
+{{--                            <img src="{{ asset('assets/landrick/images/client/2.png') }}" class="mx-auto" alt="">--}}
+{{--                            <p class="text-muted mt-4">" The most well-known dummy text is the 'Lorem Ipsum', which is said to have originated in the 16th century. "</p>--}}
+{{--                            <h6 class="text-primary">- Carl Oliver</h6>--}}
+{{--                        </div>--}}
+
+{{--                        <div class="customer-testi mr-2 ml-2 text-center p-4 rounded border">--}}
+{{--                            <img src="{{ asset('assets/landrick/images/client/3.png') }}" class="mx-auto" alt="">--}}
+{{--                            <p class="text-muted mt-4">" One disadvantage of Lorum Ipsum is that in Latin certain letters appear more frequently than others. "</p>--}}
+{{--                            <h6 class="text-primary">- Barbara McIntosh</h6>--}}
+{{--                        </div>--}}
+
+{{--                        <div class="customer-testi mr-2 ml-2 text-center p-4 rounded border">--}}
+{{--                            <img src="{{ asset('assets/landrick/images/client/4.png') }}" class="mx-auto" alt="">--}}
+{{--                            <p class="text-muted mt-4">" Thus, Lorem Ipsum has only limited suitability as a visual filler for German texts. "</p>--}}
+{{--                            <h6 class="text-primary">- Jill Webb</h6>--}}
+{{--                        </div>--}}
+
+{{--                        <div class="customer-testi mr-2 ml-2 text-center p-4 rounded border">--}}
+{{--                            <img src="{{ asset('assets/landrick/images/client/5.png') }}" class="mx-auto" alt="">--}}
+{{--                            <p class="text-muted mt-4">" There is now an abundance of readable dummy texts. These are usually used when a text is required. "</p>--}}
+{{--                            <h6 class="text-primary">- Dean Tolle</h6>--}}
+{{--                        </div>--}}
+
+{{--                        <div class="customer-testi mr-2 ml-2 text-center p-4 rounded border">--}}
+{{--                            <img src="{{ asset('assets/landrick/images/client/6.png') }}" class="mx-auto" alt="">--}}
+{{--                            <p class="text-muted mt-4">" According to most sources, Lorum Ipsum can be traced back to a text composed by Cicero. "</p>--}}
+{{--                            <h6 class="text-primary">- Christa Smith</h6>--}}
+{{--                        </div>--}}
+                    </div>
+                </div><!--end col-->
+            </div><!--end row-->
+        </div><!--end container-->
+    </section><!--end section-->
+    <!-- Testi End -->
+
 <!-- FAQ n Contact Start -->
 <section class="section bg-light">
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-12">
                 <div class="faq-container">
-                    <h4 class="question"><i class="mdi mdi-help-circle text-primary mr-2 h4"></i> How our <span class="text-primary">Landrick</span> work ?</h4>
-                    <p class="answer text-muted ml-lg-4 pl-lg-3 mb-0">Due to its widespread use as filler text for layouts, non-readability is of great importance: human perception is tuned to recognize certain patterns and repetitions in texts.</p>
+                    <h4 class="question"><i class="mdi mdi-help-circle text-primary mr-2 h4"></i> Bagaimana caranya mencari pekerjaan di <span class="text-primary">Cipta Karsa Karya</span> ?</h4>
+                    <p class="answer text-muted ml-lg-4 pl-lg-3 mb-0">Mudah sekali anda hanya perlu membuat akun dan melengkapi profile pribadi agar dapat aktif mencari pekerjaan.</p>
                 </div>
             </div><!--end col-->
 
             <div class="col-md-6 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
                 <div class="faq-container">
-                    <h4 class="question"><i class="mdi mdi-help-circle text-primary mr-2 h4"></i> What is the main process open account ?</h4>
-                    <p class="answer text-muted ml-lg-4 pl-lg-3 mb-0">If the distribution of letters and 'words' is random, the reader will not be distracted from making a neutral judgement on the visual impact</p>
+                    <h4 class="question"><i class="mdi mdi-help-circle text-primary mr-2 h4"></i> Apakah mudah mendaftar di <span class="text-primary">Cipta Karsa Karya</span>  ?</h4>
+                    <p class="answer text-muted ml-lg-4 pl-lg-3 mb-0">Anda hanya perlu klik mendaftar dan lengkapi formulir yang ada</p>
                 </div>
             </div><!--end col-->
 
             <div class="col-md-6 col-12 mt-4 pt-2">
                 <div class="faq-container">
-                    <h4 class="question"><i class="mdi mdi-help-circle text-primary mr-2 h4"></i> How to make unlimited data entry ?</h4>
-                    <p class="answer text-muted ml-lg-4 pl-lg-3 mb-0">Furthermore, it is advantageous when the dummy text is relatively realistic so that the layout impression of the final publication is not compromised.</p>
+                    <h4 class="question"><i class="mdi mdi-help-circle text-primary mr-2 h4"></i> Bagaimana caranya agar mudah diterima ?</h4>
+                    <p class="answer text-muted ml-lg-4 pl-lg-3 mb-0">lengkapi profile anda dan anda akan lebih mudah mendapatkan pekerjaan karena score anda meningkat.</p>
                 </div>
             </div><!--end col-->
 
             <div class="col-md-6 col-12 mt-4 pt-2">
                 <div class="faq-container">
-                    <h4 class="question"><i class="mdi mdi-help-circle text-primary mr-2 h4"></i> Is <span class="text-primary">Landrick</span> safer to use with my account ?</h4>
-                    <p class="answer text-muted ml-lg-4 pl-lg-3 mb-0">The most well-known dummy text is the 'Lorem Ipsum', which is said to have originated in the 16th century. Lorem Ipsum is composed in a pseudo-Latin language which more or less corresponds to 'proper' Latin.</p>
+                    <h4 class="question"><i class="mdi mdi-help-circle text-primary mr-2 h4"></i> Apakah perlu membayar di <span class="text-primary">Cipta Karsa Karya</span> ?</h4>
+                    <p class="answer text-muted ml-lg-4 pl-lg-3 mb-0">Tidak perlu mencari pekerjaan di CariKerja sepenuhnya gratis.</p>
                 </div>
             </div><!--end col-->
         </div><!--end row-->
 
-        <div class="row mt-md-5 pt-md-3 mt-4 pt-2 mt-sm-0 pt-sm-0 justify-content-center">
-            <div class="col-12 text-center">
-                <div class="section-title">
-                    <h4 class="main-title mb-4">Have Question ? Get in touch!</h4>
-                    <p class="text-muted para-desc mx-auto">Start working with <span class="text-primary font-weight-bold">Landrick</span> that can provide everything you need to generate awareness, drive traffic, connect.</p>
-                    <a href="page_contact_two.html" class="btn btn-primary mt-4">Contact us <i class="mdi mdi-arrow-right"></i></a>
-                </div>
-            </div><!--end col-->
-        </div><!--end row-->
+{{--        <div class="row mt-md-5 pt-md-3 mt-4 pt-2 mt-sm-0 pt-sm-0 justify-content-center">--}}
+{{--            <div class="col-12 text-center">--}}
+{{--                <div class="section-title">--}}
+{{--                    <h4 class="main-title mb-4">Have Question ? Get in touch!</h4>--}}
+{{--                    <p class="text-muted para-desc mx-auto">Start working with <span class="text-primary font-weight-bold">Landrick</span> that can provide everything you need to generate awareness, drive traffic, connect.</p>--}}
+{{--                    <a href="page_contact_two.html" class="btn btn-primary mt-4">Contact us <i class="mdi mdi-arrow-right"></i></a>--}}
+{{--                </div>--}}
+{{--            </div><!--end col-->--}}
+{{--        </div><!--end row-->--}}
     </div><!--end container-->
     <div class="container-fluid">
         <div class="row">

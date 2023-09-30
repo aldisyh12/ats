@@ -20,18 +20,21 @@ class AuthService
         $password = $request->password;
 
         $user = User::where(['email' => $email], ['password' => $password])->first();
-
-        if(Auth::attempt(['email' => $user->email, 'password' => $request->password])){
-            if($user->role_id == 1){
-                $request->session()->regenerate();
-                return redirect()->route('admin.dashboard');
-            }
-            if($user->role_id == 2){
-                $request->session()->regenerate();
-                return redirect()->route('user.dashboard');
+        if($user != null){
+            if(Auth::attempt(['email' => $user->email, 'password' => $request->password])){
+                if($user->role_id == 1){
+                    $request->session()->regenerate();
+                    return redirect()->route('admin.dashboard')->with(['success' => 'Berhasil login']);
+                }
+                if($user->role_id == 2){
+                    $request->session()->regenerate();
+                    return redirect()->route('user.dashboard')->with(['success' => 'Berhasil login']);
+                }
+            }else{
+                return redirect()->route('admin.form.login')->with(['error' => 'Email atau kata sandi salah']);
             }
         }else{
-            return redirect()->route('admin.form.login');
+            return redirect()->route('admin.form.login')->with(['error' => 'Email atau kata sandi salah']);
         }
     }
 
@@ -43,7 +46,7 @@ class AuthService
 
         request()->session()->regenerateToken();
 
-        return redirect()->route('admin.form.login');
+        return redirect()->route('admin.form.login')->with(['success' => 'Berhasil logout']);
     }
 
     public function formRegisterUser()
@@ -57,6 +60,7 @@ class AuthService
             "name" => $request->name,
             "email" => $request->email,
             "password" => bcrypt($request->password),
+            "role_id" => 2,
         ]);
 
         CvProfile::create([
@@ -65,6 +69,6 @@ class AuthService
             "is_updated" => 1
         ]);
 
-        return redirect()->route('admin.form.login')->with(['success' => 'Kategori berhasil ditambahkan']);
+        return redirect()->route('admin.form.login')->with(['success' => 'Selamat anda berhasil mendaftar']);
     }
 }

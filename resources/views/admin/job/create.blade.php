@@ -50,6 +50,14 @@
                                 <input type="text" class="form-control" name="job_header" placeholder="Input Judul Pekerjaan" required />
                             </div>
                             <div class="form-group">
+                                <label>Minimal Pengalaman</label>
+                                <input type="text" class="form-control" name="job_header" placeholder="Input Pengalaman, Contoh : 2 Tahun" required />
+                            </div>
+                            <div class="form-group">
+                                <label>Jabatan</label>
+                                <input type="text" class="form-control" name="job_header" placeholder="Input Jabatan, Contoh : Fullstack Programmer" required />
+                            </div>
+                            <div class="form-group">
                                 <label>Kategori</label>
                                 <select class="form-control" name="category_id">
                                     @foreach($categoryList as $key => $record)

@@ -63,6 +63,22 @@
 
 @stack('js')
 
+@if(Session::has('success'))
+    <script>
+        swal("Berhasil", "{!!Session::get('success')!!}", "success", {
+            button: "OK",
+        });
+    </script>
+@endif
+
+@if(Session::has('error'))
+    <script>
+        swal("Gagal", "{!!Session::get('error')!!}", "error", {
+            button: "OK",
+        });
+    </script>
+@endif
+
 
 
 

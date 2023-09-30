@@ -26,7 +26,7 @@
         <div class="col-sm-12">
             <div class="btn-group pull-right m-t-15">
                 <button class="btn btn-primary waves-effect waves-light" data-toggle="modal"
-                        data-target="#con-close-modal">Create <span class="m-l-5"><i class="fa fa-cog"></i></span>
+                        data-target="#con-close-modal">Buat Kategori
                 </button>
             </div>
 
@@ -72,8 +72,13 @@
                             <td>{{ $record->name }}</td>
                             <td>{{ Carbon\Carbon::parse($record->created_at)->format('d-m-Y') }}</td>
                             <td>
-                                <button class="btn btn-sm btn-primary">Ubah</button>
-                                <button class="btn btn-sm btn-danger">Hapus</button>
+                                <div class="d-flex flex-row justify-content-around">
+                                    <form action="{{ route('admin.category.delete', $record->id) }}" method="POST" class="d-inline">
+                                        <a href="{{ route('admin.category.show', $record->id) }}" class="btn btn-sm btn-primary">Ubah</a>
+                                        @csrf
+                                        <button class="btn btn-sm btn-danger" type="submit">Hapus</button>
+                                    </form>
+                                </div>
                             </td>
                         </tr>
                     @endforeach
@@ -99,6 +104,35 @@
                                 <div class="form-group">
                                     <label for="field-1" class="control-label">Name</label>
                                     <input type="text" name="name" class="form-control" id="field-1" placeholder="Nama Kategori">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-info waves-effect waves-light">Save changes</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div><!-- /.modal -->
+
+    <div id="con-close-modal-ubah" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <form action="{{ route('admin.category.update', $record->id) }}" method="POST">
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title">Update Category</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="field-1" class="control-label">Name</label>
+                                    <input type="text" name="name" value="{{ $record->name }}" class="form-control" id="field-1" placeholder="Nama Kategori">
                                 </div>
                             </div>
                         </div>

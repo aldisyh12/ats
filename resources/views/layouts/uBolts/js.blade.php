@@ -28,6 +28,7 @@
 
 <script src="{{ asset('assets/ubolts/assets/js/jquery.core.js') }}"></script>
 <script src="{{ asset('assets/ubolts/assets/js/jquery.app.js') }}"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <script type="text/javascript">
     jQuery(document).ready(function($) {

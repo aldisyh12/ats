@@ -17,7 +17,7 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="btn-group pull-right m-t-15">
-                <a type="button" class="btn btn-default dropdown-toggle waves-effect waves-light" href="{{ route('admin.job.create') }}">Buat <span class="m-l-5"><i class="fa fa-cog"></i></span></a>
+                <a type="button" class="btn btn-default dropdown-toggle waves-effect waves-light" href="{{ route('admin.job.create') }}">Buat Pekerjaan </a>
             </div>
 
             <h4 class="page-title">Pekerjaan</h4>
@@ -72,8 +72,11 @@
                             </td>
                             <td>{{ Carbon\Carbon::parse($record->created_at)->format('d-m-Y') }}</td>
                             <td>
-                                <button class="btn btn-sm btn-primary">Ubah</button>
-                                <button class="btn btn-sm btn-danger">Hapus</button>
+                                <form action="{{route('admin.job.delete', $record->id)}}" method="POST">
+                                    @csrf
+                                    <a href="{{ route('admin.job.show', $record->id) }}" class="btn btn-sm btn-primary">Ubah</a>
+                                    <button class="btn btn-sm btn-danger">Hapus</button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach

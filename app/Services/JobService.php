@@ -50,6 +50,8 @@ class JobService
         try {
             $record = new Job();
             $record->job_header = $request->job_header;
+            $record->pengalaman = $request->pengalaman;
+            $record->jabatan = $request->jabatan;
             $record->category_id = $request->category_id;
             $record->description = $request->description;
             $record->date = $request->date;
@@ -84,6 +86,66 @@ class JobService
             Log::error(Constants::ERROR, ['message' => $ex->getMessage()]);
             return redirect(route('admin.job'))->with(['error' => 'Pekerjaan gagal ditambahkan']);
         }
+    }
+
+    public function show($id)
+    {
+        $record = Job::where('id', $id)->first();
+        $record['images'] = File::where('id_job', $record->id)->first();
+        $record['category'] = Category::where('id', $record->category_id)->first();
+
+        $categoryList = $this->categoryRepository->get();
+
+        return view('admin.job.update', ["record" => $record, "categoryList" => $categoryList]);
+    }
+
+    public function update($id, Request $request)
+    {
+        try {
+            $file = $request->file('path');
+
+            $nama_file = $file->getClientOriginalName();
+            $file->move('pekerjaan',$file->getClientOriginalName());
+
+            $record = Job::find($id);
+            $file = File::where('id_job', $record->id)->first();
+            $record->update([
+                "job_header" => $request->job_header,
+                "category_id" => $request->category_id,
+                "description" => $request->description,
+                "date" => $request->date,
+                "pengalaman" => $request->pengalaman,
+                "jabatan" => $request->jabatan,
+            ]);
+
+            $file->update([
+                "path" => $nama_file
+            ]);
+
+        } catch (\Exception $ex) {
+            Log::error(Constants::ERROR, ['message' => $ex->getMessage()]);
+            return redirect(route('admin.job'))->with(['error' => 'Pekerjaan gagal diubah']);
+        }
+
+        return redirect(route('admin.job'))->with(['success' => 'Pekerjaan berhasil diubah']);
+    }
+
+    public function delete($id)
+    {
+        try {
+            $record = Job::find($id);
+            $images = File::where('id_job', $record->id)->first();
+
+            if($record != null)
+            {
+                $record->delete();
+                $images->delete();
+            }
+        } catch (\Exception $ex) {
+            Log::error(Constants::ERROR, ['message' => $ex->getMessage()]);
+            return redirect(route('admin.job'))->with(['error' => 'Pekerjaan gagal dihapus']);
+        }
+        return redirect(route('admin.job'))->with(['success' => 'Pekerjaan berhasil dihapus']);
     }
 
     /*
@@ -125,12 +187,24 @@ class JobService
                 "user_id" => auth()->user()->id,
                 "created_at" => DateTimeConverter::getDateTimeNow(),
             ]);
+
+            if($request->file('path') != null){
+                $filename = round(microtime(true) * 1000).'-'.str_replace(' ','-',$request->file('path')->getClientOriginalName());
+                $request->file('path')->move(public_path('pekerjaan'), $filename);
+
+                File::create([
+                    "id_job_user" => $request->job_id,
+                    "created_by" => auth()->user()->id,
+                    "path" => $filename,
+                ]);
+            }
+
         } catch (\Exception $ex) {
             Log::error(Constants::ERROR, ['message' => $ex->getMessage()]);
             return redirect(route('user.job.detail', $request->job_id))->with(['error' => 'Gagal melamar pekerjaan']);
         }
 
-        return redirect(route('user.job.detail', $request->job_id))->with(['success' => 'Berhasil melamar pekerjaan']);
+        return redirect(route('user.job.list', $request->job_id))->with(['success' => 'Berhasil melamar pekerjaan']);
     }
 
     public function pekerjaanUser()

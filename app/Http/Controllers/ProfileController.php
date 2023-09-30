@@ -27,4 +27,19 @@ class ProfileController extends Controller
         return $this->profileService->updateCv($request);
     }
 
+    public function deletePengelaman($id)
+    {
+        return $this->profileService->deletePengelamanKerja($id);
+    }
+
+    public function deletePendidikan($id)
+    {
+        return $this->profileService->deletePendidikan($id);
+    }
+
+    public function ubahGambar(Request $request)
+    {
+        return $this->profileService->ubahGambar($request);
+    }
+
 }

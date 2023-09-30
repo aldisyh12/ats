@@ -27,14 +27,14 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="btn-group pull-right m-t-15">
-                <button type="button" class="btn btn-default dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="false">Settings <span class="m-l-5"><i class="fa fa-cog"></i></span></button>
-                <ul class="dropdown-menu drop-menu-right" role="menu">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">Separated link</a></li>
-                </ul>
+{{--                <button type="button" class="btn btn-default dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="false">Settings <span class="m-l-5"><i class="fa fa-cog"></i></span></button>--}}
+{{--                <ul class="dropdown-menu drop-menu-right" role="menu">--}}
+{{--                    <li><a href="#">Action</a></li>--}}
+{{--                    <li><a href="#">Another action</a></li>--}}
+{{--                    <li><a href="#">Something else here</a></li>--}}
+{{--                    <li class="divider"></li>--}}
+{{--                    <li><a href="#">Separated link</a></li>--}}
+{{--                </ul>--}}
             </div>
 
             <h4 class="page-title">List Pekerjaan</h4>
@@ -79,12 +79,12 @@
                             <img src="{{ asset('assets/ubolts/assets/images/gallery/2.jpg') }}" class="thumb-img" alt="work-thumbnail">
                         @endif
                     </a>
-                    <h4>{{ $record->job_header }}</h4>
-                    <h6>{{ $record->category->name }}</h6>
-                    <h6>{{ $record->date }}</h6>
+                    <h4>Judul : {{ $record->job_header }}</h4>
+                    <h6>kategori : {{ $record->category->name }}</h6>
+                    <h6>Dibuat : {{ $record->date }}</h6>
                     <h6>
-                        <a href="{{ route('user.job.detail', $record->id) }}" class="btn btn-primary">Detail Pekerjaan</a>
-                        <a href="{{ route('user.job.detail', $record->id) }}" class="btn btn-primary">Lamar Pekerjaan</a>
+                        <a href="{{ route('user.job.detail', $record->id) }}" class="btn btn-outline-primary">Detail Pekerjaan</a>
+{{--                        <a href="{{ route('user.job.detail', $record->id) }}" class="btn btn-outline-primary">Lamar Pekerjaan</a>--}}
                     </h6>
                 </div>
             </div>

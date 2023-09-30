@@ -21,28 +21,28 @@
 @endpush
 
 @section('content')
-    @if($cv->is_new == 1)
-        <div class="row child">
-            <div class="col-lg-12 col-md-8">
-                <div class="container">
-                    <div class="m-t-30 m-b-30 text-center">
-                        <a href="{{ route('user.profile-create', auth()->user()->id) }}" class="btn btn-default waves-effect waves-light">Anda belum melengkapi profile</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    @else
+{{--    @if($cv->is_new == 1)--}}
+{{--        <div class="row child">--}}
+{{--            <div class="col-lg-12 col-md-8">--}}
+{{--                <div class="container">--}}
+{{--                    <div class="m-t-30 m-b-30 text-center">--}}
+{{--                        <a href="{{ route('user.profile-create', auth()->user()->id) }}" class="btn btn-default waves-effect waves-light">Anda belum melengkapi profile</a>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    @else--}}
     <div class="row">
         <div class="col-sm-12">
             <div class="btn-group pull-right m-t-15">
-                <button type="button" class="btn btn-default dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="false">Settings <span class="m-l-5"><i class="fa fa-cog"></i></span></button>
-                <ul class="dropdown-menu drop-menu-right" role="menu">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">Separated link</a></li>
-                </ul>
+{{--                <button type="button" class="btn btn-default dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="false">Settings <span class="m-l-5"><i class="fa fa-cog"></i></span></button>--}}
+{{--                <ul class="dropdown-menu drop-menu-right" role="menu">--}}
+{{--                    <li><a href="#">Action</a></li>--}}
+{{--                    <li><a href="#">Another action</a></li>--}}
+{{--                    <li><a href="#">Something else here</a></li>--}}
+{{--                    <li class="divider"></li>--}}
+{{--                    <li><a href="#">Separated link</a></li>--}}
+{{--                </ul>--}}
             </div>
 
             <h4 class="page-title">Profile</h4>
@@ -57,39 +57,50 @@
         <div class="col-md-4 col-lg-3">
             <div class="profile-detail card-box">
                 <div>
-                    <img src="{{ asset('assets/ubolts/assets/images/users/avatar-2.jpg') }}" class="img-circle" alt="profile-image">
+                    @if($foto != null)
+                        <img src="{{ asset('pekerjaan/'. $foto->path) }}" width="100" height="80" />
+                    @else
+                        <img src="{{ asset('assets/ubolts/assets/images/users/avatar-2.jpg') }}" class="img-circle" alt="profile-image">
+                    @endif
 
                     <ul class="list-inline status-list m-t-20">
-                        <li>
-                            <button type="button" class="btn btn-pink btn-custom btn-rounded waves-effect waves-light">Export Ke Pdf</button>
-                        </li>
+{{--                        <li>--}}
+{{--                            <button type="button" class="btn btn-pink btn-custom btn-rounded waves-effect waves-light">Export Ke Pdf</button>--}}
+{{--                        </li>--}}
 
+{{--                        <li>--}}
+{{--                            <button type="button" class="btn btn-pink btn-custom btn-rounded waves-effect waves-light">Lihat</button>--}}
+{{--                        </li>--}}
                         <li>
-                            <button type="button" class="btn btn-pink btn-custom btn-rounded waves-effect waves-light">Lihat</button>
+                            <button class="btn btn-primary waves-effect waves-light kanan" data-toggle="modal"
+                                    data-target="#con-close-modal-profile">Ubah Foto Profile <span class="m-l-5"></span>
+                            </button>
                         </li>
                     </ul>
 
                     <hr>
 
+                        <p class="font-weight-bold text-lg">Cv Score : {{$user->score ?? 0}}</p>
 
-                    <div class="button-list m-t-20">
-                        <button type="button" class="btn btn-facebook waves-effect waves-light">
-                            <i class="fa fa-facebook"></i>
-                        </button>
 
-                        <button type="button" class="btn btn-twitter waves-effect waves-light">
-                            <i class="fa fa-twitter"></i>
-                        </button>
+{{--                    <div class="button-list m-t-20">--}}
+{{--                        <button type="button" class="btn btn-facebook waves-effect waves-light">--}}
+{{--                            <i class="fa fa-facebook"></i>--}}
+{{--                        </button>--}}
 
-                        <button type="button" class="btn btn-linkedin waves-effect waves-light">
-                            <i class="fa fa-linkedin"></i>
-                        </button>
+{{--                        <button type="button" class="btn btn-twitter waves-effect waves-light">--}}
+{{--                            <i class="fa fa-twitter"></i>--}}
+{{--                        </button>--}}
 
-                        <button type="button" class="btn btn-dribbble waves-effect waves-light">
-                            <i class="fa fa-dribbble"></i>
-                        </button>
+{{--                        <button type="button" class="btn btn-linkedin waves-effect waves-light">--}}
+{{--                            <i class="fa fa-linkedin"></i>--}}
+{{--                        </button>--}}
 
-                    </div>
+{{--                        <button type="button" class="btn btn-dribbble waves-effect waves-light">--}}
+{{--                            <i class="fa fa-dribbble"></i>--}}
+{{--                        </button>--}}
+
+{{--                    </div>--}}
                 </div>
 
             </div>
@@ -138,6 +149,12 @@
                                 <div class="timeline-2">
                                     @foreach($cv->pengalaman as $key => $value)
                                     <div class="time-item">
+                                        <div style="float: right">
+                                            <form action="{{ route('user.pengalaman.delete', $value->id) }}" method="POST">
+                                                @csrf
+                                                <button class="btn btn-sm btn-danger">Hapus</button>
+                                            </form>
+                                        </div>
                                         <div class="item-info">
                                             <p>
                                                 <strong>
@@ -183,6 +200,12 @@
                                 <div class="timeline-2">
                                     @foreach($cv->pendidikan as $key => $value)
                                         <div class="time-item">
+                                            <div style="float: right">
+                                                <form action="{{ route('user.pendidikan.delete', $value->id) }}" method="POST">
+                                                    @csrf
+                                                    <button class="btn btn-sm btn-danger">Hapus</button>
+                                                </form>
+                                            </div>
                                             <div class="item-info">
                                                 <p>
                                                     <strong>
@@ -210,7 +233,7 @@
 
                 <div class="row">
                     <div class="col-md-6">
-                        <h2 class="kiri">Skills</h2>
+                        <h2 class="kiri">Keahlian</h2>
                     </div>
                     <div class="col-md-6">
                         <button class="btn btn-primary waves-effect waves-light kanan" data-toggle="modal"
@@ -221,66 +244,66 @@
                 <hr>
                 <div class="row">
                     <div class="col-md-12">
-                        @foreach($cv->pendidikan as $key => $value)
-                        <button type="button" class="btn btn-white btn-custom btn-rounded waves-effect">{{ $value->skill_id ?? '-' }}</button>
+                        @foreach($cv->keahlian as $key => $value)
+                        <button type="button" class="btn btn-white btn-custom btn-rounded waves-effect">{{ $value->skill->name ?? '-' }}</button>
                         @endforeach
                     </div>
                 </div>
 
                 <br><br>
 
-                <div class="row">
-                    <div class="col-md-6">
-                        <h2 class="kiri">Minat & Prefensi Pekerjaan</h2>
-                    </div>
-                    <div class="col-md-6">
-                        <button class="btn btn-primary btn-sm kanan">Edit</button>
-                    </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col-md-12">
-                        <h3>Kosong</h3>
-                    </div>
-                </div>
+{{--                <div class="row">--}}
+{{--                    <div class="col-md-6">--}}
+{{--                        <h2 class="kiri">Minat & Prefensi Pekerjaan</h2>--}}
+{{--                    </div>--}}
+{{--                    <div class="col-md-6">--}}
+{{--                        <button class="btn btn-primary btn-sm kanan">Edit</button>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <hr>--}}
+{{--                <div class="row">--}}
+{{--                    <div class="col-md-12">--}}
+{{--                        <h3>Kosong</h3>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
 
-                <br><br>
+{{--                <br><br>--}}
 
-                <div class="row">
-                    <div class="col-md-6">
-                        <h2 class="kiri">Resume</h2>
-                    </div>
-                    <div class="col-md-6">
-                        <button class="btn btn-primary waves-effect waves-light kanan" data-toggle="modal"
-                                data-target="#con-close-modal-resume">Edit <span class="m-l-5"></span>
-                        </button>
-                    </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col-md-12">
-                        <h3>Kosong</h3>
-                    </div>
-                </div>
+{{--                <div class="row">--}}
+{{--                    <div class="col-md-6">--}}
+{{--                        <h2 class="kiri">Resume</h2>--}}
+{{--                    </div>--}}
+{{--                    <div class="col-md-6">--}}
+{{--                        <button class="btn btn-primary waves-effect waves-light kanan" data-toggle="modal"--}}
+{{--                                data-target="#con-close-modal-resume">Edit <span class="m-l-5"></span>--}}
+{{--                        </button>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <hr>--}}
+{{--                <div class="row">--}}
+{{--                    <div class="col-md-12">--}}
+{{--                        <h3>Kosong</h3>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
 
-                <br><br>
+{{--                <br><br>--}}
 
-                <div class="row">
-                    <div class="col-md-6">
-                        <h2 class="kiri">Media Sosial</h2>
-                    </div>
-                    <div class="col-md-6">
-                        <button class="btn btn-primary waves-effect waves-light kanan" data-toggle="modal"
-                                data-target="#con-close-modal-resume2">Edit <span class="m-l-5"></span>
-                        </button>
-                    </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col-md-12">
-                        <h3>Kosong</h3>
-                    </div>
-                </div>
+{{--                <div class="row">--}}
+{{--                    <div class="col-md-6">--}}
+{{--                        <h2 class="kiri">Media Sosial</h2>--}}
+{{--                    </div>--}}
+{{--                    <div class="col-md-6">--}}
+{{--                        <button class="btn btn-primary waves-effect waves-light kanan" data-toggle="modal"--}}
+{{--                                data-target="#con-close-modal-resume2">Edit <span class="m-l-5"></span>--}}
+{{--                        </button>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <hr>--}}
+{{--                <div class="row">--}}
+{{--                    <div class="col-md-12">--}}
+{{--                        <h3>Kosong</h3>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
             </div>
         </div>
 
@@ -438,7 +461,11 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <input type="text" name="skill_id" class="form-control" id="field-1" placeholder="Keahlian">
+                                    <select class="form-control" name="skill_id">
+                                        @foreach($skill as $key => $record)
+                                            <option value="{{ $record->id }}">{{ $record->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -526,7 +553,36 @@
             </form>
         </div>
     </div><!-- /.modal -->
-    @endif
+
+<div id="con-close-modal-profile" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <form action="{{ route('user.ubahgambar') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">Ubah Gambar</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Input Gambar</label>
+                                <input type="file" name="path" class="filestyle" data-buttonname="btn-white">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-info waves-effect waves-light">Save changes</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div><!-- /.modal -->
+{{--    @endif--}}
 @endsection
 
 @push('js')
