@@ -11,7 +11,7 @@
                 @endif
             </div>
 
-            <h4 class="page-title">Dashboard</h4>
+            <h4 class="page-title">ALDIANSYAH</h4>
             <p class="text-muted page-title-alt">Halo User, Selamat datang di panel Cipta Karsa Karya !</p>
         </div>
     </div>
