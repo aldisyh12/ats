@@ -13,17 +13,17 @@
 @endpush
 
 @section('content')
-    @if($cv->is_new == 1)
-        <div class="row child">
-            <div class="col-lg-12 col-md-8">
-                <div class="container">
-                    <div class="m-t-30 m-b-30 text-center">
-                        <a href="{{ route('user.profile-create', auth()->user()->id) }}" class="btn btn-default waves-effect waves-light">Anda belum melengkapi profile</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    @else
+{{--    @if($cv->is_new == 1)--}}
+{{--        <div class="row child">--}}
+{{--            <div class="col-lg-12 col-md-8">--}}
+{{--                <div class="container">--}}
+{{--                    <div class="m-t-30 m-b-30 text-center">--}}
+{{--                        <a href="{{ route('user.profile-create', auth()->user()->id) }}" class="btn btn-default waves-effect waves-light">Anda belum melengkapi profile</a>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    @else--}}
     <div class="row">
         <div class="col-sm-12">
             <div class="btn-group pull-right m-t-15">
@@ -193,7 +193,7 @@
 
         </div>
     </div> <!-- End row -->
-    @endif
+{{--    @endif--}}
 @endsection
 
 @push('js')

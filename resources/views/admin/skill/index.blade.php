@@ -30,7 +30,7 @@
                 </button>
             </div>
 
-            <h4 class="page-title">Kategori</h4>
+            <h4 class="page-title">Keahlian</h4>
             <ol class="breadcrumb">
                 <li>
                     <a href="#">Dashboard</a>
@@ -73,8 +73,8 @@
                             <td>{{ Carbon\Carbon::parse($record->created_at)->format('d-m-Y') }}</td>
                             <td>
                                 <div class="d-flex flex-row justify-content-around">
-                                    <form action="{{ route('admin.category.delete', $record->id) }}" method="POST" class="d-inline">
-                                        <a href="{{ route('admin.category.show', $record->id) }}" class="btn btn-sm btn-primary">Ubah</a>
+                                    <form action="{{ route('admin.skill.delete', $record->id) }}" method="POST" class="d-inline">
+                                        <a href="{{ route('admin.skill.show', $record->id) }}" class="btn btn-sm btn-primary">Ubah</a>
                                         @csrf
                                         <button class="btn btn-sm btn-danger" type="submit">Hapus</button>
                                     </form>
@@ -102,8 +102,8 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="field-1" class="control-label">Name</label>
-                                    <input type="text" name="name" class="form-control" id="field-1" placeholder="Nama Kategori">
+                                    <label for="field-1" class="control-label">Nama</label>
+                                    <input type="text" name="name" class="form-control" id="field-1" placeholder="Nama Keahlian">
                                 </div>
                             </div>
                         </div>
